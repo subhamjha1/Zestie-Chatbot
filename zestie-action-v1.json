@@ -1,0 +1,1895 @@
+{
+  "name": "zestie-action",
+  "type": "action",
+  "counts": {
+    "actions": 5,
+    "intents": 2,
+    "entities": 7,
+    "data_types": 0,
+    "collections": 0,
+    "global_variables": 0
+  },
+  "status": "Available",
+  "language": "en",
+  "skill_id": "d319b2fc-013d-4369-af0d-2fc43c51fccd",
+  "workspace": {
+    "actions": [
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "digression_failure",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "Sorry I couldn't confirm if you wanted to return to previous topic, let me connect to an agent."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "digression_failure",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Failed to confirm topic return"
+                }
+              ]
+            },
+            "next_step": "step_001"
+          },
+          {
+            "step": "step_001",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "I'm afraid I don't understand. I can connect you to an agent."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_001",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Step validation failed"
+                }
+              ]
+            },
+            "next_step": "step_002"
+          },
+          {
+            "step": "step_002",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "Sorry I couldn't assist you. I will connect you to an agent right away."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_002",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Agent requested"
+                }
+              ]
+            },
+            "next_step": "step_003"
+          },
+          {
+            "step": "step_003",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "I am afraid I do not understand what you are asking, let me connect you to an agent."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_003",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "No action matches"
+                }
+              ]
+            },
+            "next_step": "step_004"
+          },
+          {
+            "step": "step_004",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "It seems this conversation would be best managed by a human agent. Let me connect you to one of our agents."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_004",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Danger word detected"
+                }
+              ]
+            },
+            "next_step": "step_005"
+          },
+          {
+            "step": "step_005",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "It seems this conversation would be best managed by a human agent. Let me connect you to one of our agents."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "connect_to_agent",
+              "response": {
+                "transfer_info": {
+                  "target": {}
+                },
+                "agent_available": {
+                  "message": "Let's send you to an available agent."
+                },
+                "agent_unavailable": {
+                  "message": "There are no agents available at this time. When one becomes available, we'll connect you."
+                },
+                "message_to_human_agent": ""
+              }
+            },
+            "variable": "step_005",
+            "condition": {
+              "eq": [
+                {
+                  "system_variable": "fallback_reason"
+                },
+                {
+                  "scalar": "Profanity detected"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Fallback",
+        "action": "fallback",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "intent": "fallback_connect_to_agent"
+        },
+        "variables": [
+          {
+            "title": "Topic return failed",
+            "variable": "digression_failure",
+            "data_type": "any"
+          },
+          {
+            "title": "I'm afraid I don't understand. I can connect you to an agent.",
+            "variable": "step_001",
+            "data_type": "any"
+          },
+          {
+            "title": "Sorry I couldn't assist you. I will connect you to an agent righ",
+            "variable": "step_002",
+            "data_type": "any"
+          },
+          {
+            "title": "I am afraid I do not understand what you are asking, let me conn",
+            "variable": "step_003",
+            "data_type": "any"
+          },
+          {
+            "title": "It seems this conversation would be best managed",
+            "variable": "step_004",
+            "data_type": "any"
+          },
+          {
+            "title": "Profanity - It seems this conversation",
+            "variable": "step_005",
+            "data_type": "any"
+          }
+        ],
+        "next_action": "run_always",
+        "disambiguation_opt_out": true
+      },
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "danger_word_detected",
+            "type": "standard",
+            "title": "Connect to agent",
+            "handlers": [],
+            "resolver": {
+              "type": "fallback"
+            },
+            "variable": "danger_word_detected_variable",
+            "condition": {
+              "entity": "danger_words"
+            },
+            "next_step": "profanity_detected"
+          },
+          {
+            "step": "profanity_detected",
+            "type": "standard",
+            "title": "Show warning",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Please use appropriate language when interacting with the assistant."
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "max_hits",
+                "handler": "max_hits_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "max_hits": 2,
+            "resolver": {
+              "type": "end_action"
+            },
+            "variable": "profanity_detected_variable",
+            "condition": {
+              "entity": "profane_words"
+            }
+          }
+        ],
+        "title": "Trigger word detected",
+        "action": "run_always",
+        "boosts": [],
+        "handlers": [],
+        "variables": [
+          {
+            "title": "Profanity detected",
+            "variable": "danger_word_detected_variable",
+            "data_type": "any"
+          },
+          {
+            "title": "Profane word detected",
+            "variable": "profanity_detected_variable",
+            "data_type": "any"
+          }
+        ],
+        "next_action": "anything_else"
+      },
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "step_001",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "I'm afraid I don't understand. Please rephrase your question."
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "end_action"
+            },
+            "variable": "step_001",
+            "condition": {
+              "lte": [
+                {
+                  "system_variable": "no_action_matches_count"
+                },
+                {
+                  "scalar": 3
+                }
+              ]
+            },
+            "next_step": "step_002"
+          },
+          {
+            "step": "step_002",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": ""
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "invoke_another_action_and_end",
+              "invoke_action": {
+                "action": "fallback",
+                "policy": "default",
+                "parameters": null,
+                "result_variable": "step_002_result_1",
+                "ignore_end_action_steps": false
+              }
+            },
+            "variable": "step_002",
+            "condition": {
+              "gt": [
+                {
+                  "system_variable": "no_action_matches_count"
+                },
+                {
+                  "scalar": 3
+                }
+              ]
+            }
+          }
+        ],
+        "title": "No matches",
+        "action": "anything_else",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "expression": "anything_else"
+        },
+        "variables": [
+          {
+            "title": "I am afraid I do not understand what you are asking, please re-p",
+            "variable": "step_001",
+            "data_type": "any"
+          },
+          {
+            "variable": "step_002",
+            "data_type": "any"
+          },
+          {
+            "variable": "step_002_result_1",
+            "data_type": "any"
+          }
+        ],
+        "disambiguation_opt_out": true
+      },
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "step_001",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text": "Welcome, how can I assist you?"
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "end_action"
+            },
+            "variable": "step_001"
+          }
+        ],
+        "title": "Greet customer",
+        "action": "welcome",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "expression": "welcome"
+        },
+        "variables": [
+          {
+            "variable": "step_001",
+            "data_type": "any"
+          }
+        ],
+        "next_action": "action_18656",
+        "disambiguation_opt_out": true
+      },
+      {
+        "type": "standard",
+        "steps": [
+          {
+            "step": "step_575",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**Hey there! I'm Zestie, your personal fitness buddy 💪 Ready to get healthier, stronger, and feel awesome? What would you like help with today? Choose one to begin:**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Get a weekly plan",
+                      "value": {
+                        "input": {
+                          "text": "Get a weekly plan"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Start a home workout",
+                      "value": {
+                        "input": {
+                          "text": "Start a home workout"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Get a healthy meal idea",
+                      "value": {
+                        "input": {
+                          "text": "Get a healthy meal idea"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Stay motivated",
+                      "value": {
+                        "input": {
+                          "text": "Stay motivated"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_36508",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_575",
+            "next_step": "step_316"
+          },
+          {
+            "step": "step_316",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**I can help you build a great week! What kind of plan are you looking for?**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Weekly Workout Schedule",
+                      "value": {
+                        "input": {
+                          "text": "Weekly Workout Schedule"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Weekly Meal Plan",
+                      "value": {
+                        "input": {
+                          "text": "Weekly Meal Plan"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Weekly Motivation Boost",
+                      "value": {
+                        "input": {
+                          "text": "Weekly Motivation Boost"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_37507",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_316",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_575"
+                },
+                {
+                  "value": "Get a weekly plan",
+                  "from_entity": "entity_36508"
+                }
+              ]
+            },
+            "next_step": "step_707"
+          },
+          {
+            "step": "step_707",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "- Here is your simple weekly workout schedule. You can adjust the intensity and time as you feel comfortable.\n    - **Monday:** Full Body Workout (20-30 mins): Bodyweight Squats, Push-ups (on knees), Lunges, Plank.\n    - **Tuesday:** Cardio (20 mins): Jog in place, Jumping Jacks, High Knees.\n    - **Wednesday:** Rest or light stretching.\n    - **Thursday:** Upper Body Focus (20 mins): Push-ups,"
+                          },
+                          {
+                            "scalar": " Tricep Dips (using a chair), Arm Circles.\n    - **Friday:** Lower Body Focus (20 mins): Bodyweight Squats, Lunges, Glute Bridges.\n    - **Saturday:** Active Day: Go for a long walk or light jog outside.\n    - **Sunday:** Rest.What would you like to do next?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_707",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_316"
+                },
+                {
+                  "value": "Weekly Workout Schedule",
+                  "from_entity": "entity_37507"
+                }
+              ]
+            },
+            "next_step": "step_570"
+          },
+          {
+            "step": "step_570",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "- Eating healthy is easier with a plan! Here is a simple, healthy weekly meal idea:\n    - **Breakfast:** Oatmeal with berries (Mon, Wed, Fri), Scrambled eggs with spinach (Tue, Thu), Greek yogurt with granola (Sat, Sun)\n    - **Lunch:** Salad with grilled chicken, lentils, or chickpeas\n    - **Dinner:** Lean protein (fish, chicken) with roasted vegetables and a side of quinoa or brown rice"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                },
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "- **Snacks:** Apple with peanut butter, a handful of almonds, or a protein shake.\n\n<br />\n\n\n\nWhat would you like to do next?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_570",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_316"
+                },
+                {
+                  "value": "Weekly Meal Plan",
+                  "from_entity": "entity_37507"
+                }
+              ]
+            },
+            "next_step": "step_561"
+          },
+          {
+            "step": "step_561",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "- Here's your weekly boost to keep you going! Remember, every step counts.\n    - **Monday:** \"Don't let a bad day make you feel like you have a bad life.\"\n    - **Tuesday:** \"A little progress each day adds up to big results.\"\n    - **Wednesday:** \"You are your only limit.\"\n    - **Thursday:** \"Make yourself a priority today.\"\n    - **Friday:** \"Finish strong and be proud of your work this week."
+                          },
+                          {
+                            "scalar": "\"\n    - **Saturday:** \"Rest is not a reward, it's a necessity.\"\n    - **Sunday:** \"Reset your mind and start the new week with a positive outlook.\n\n\n\n<br />\n\n\n\n\"What would you like to do next?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_561",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_316"
+                },
+                {
+                  "value": "Weekly Motivation Boost",
+                  "from_entity": "entity_37507"
+                }
+              ]
+            },
+            "next_step": "step_166"
+          },
+          {
+            "step": "step_166",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**Great choice! What kind of workout would you like to start today?**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Full body workout",
+                      "value": {
+                        "input": {
+                          "text": "Full body workout"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Upper body workout",
+                      "value": {
+                        "input": {
+                          "text": "Upper body workout"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Lower body workout",
+                      "value": {
+                        "input": {
+                          "text": "Lower body workout"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_38358",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_166",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_575"
+                },
+                {
+                  "value": "Start a home workout",
+                  "from_entity": "entity_36508"
+                }
+              ]
+            },
+            "next_step": "step_451"
+          },
+          {
+            "step": "step_451",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "- Here is a full body workout for you. Do each exercise for 3 sets. Take a short rest between sets.\n1. Bodyweight Squats: 10-12 reps\n\n2. Push-ups: 8-10 reps (on knees if needed)\n\n3. Lunges: 8-10 reps per leg\n\n4. Glute Bridges: 15 reps\n\n5. Plank: Hold for 30 secondsYou've got a great plan!\n\n<br />\n\n\n\n What would you like to do next?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_451",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_166"
+                },
+                {
+                  "value": "Full body workout",
+                  "from_entity": "entity_38358"
+                }
+              ]
+            },
+            "next_step": "step_365"
+          },
+          {
+            "step": "step_365",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "- Here is an upper body workout. Do each exercise for 3 sets.\n\n\n  1. Push-ups: 8-10 reps (on knees if needed)\n  2. Dumbbell Rows: 10 reps per arm (if you have dumbbells)\n  3. Overhead Press: 10 reps (with dumbbells or water bottles)\n  4. Tricep Dips: 10 reps (using a chair or bench)\n  5. Plank with Shoulder Taps: 45 secondsThat's a strong workout! \n\n<br />\n\n\n\nWhat would you like to do next?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_365",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_166"
+                },
+                {
+                  "value": "Upper body workout",
+                  "from_entity": "entity_38358"
+                }
+              ]
+            },
+            "next_step": "step_352"
+          },
+          {
+            "step": "step_352",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Here is a lower body workout. Do each exercise for 3 sets.\n\n\n  1. Bodyweight Squats: 12-15 reps\n  2. Lunges: 10 reps per leg\n  3. Goblet Squats: 10-12 reps (if you have a dumbbell)\n  4. Glute Bridges: 15 reps\n  5. Calf Raises: 20 reps\n  6. Wall Sit: Hold for 45 seconds\n\nYour legs will thank you! What would you like to do next?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_352",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_166"
+                },
+                {
+                  "value": "Lower body workout",
+                  "from_entity": "entity_38358"
+                }
+              ]
+            },
+            "next_step": "step_609"
+          },
+          {
+            "step": "step_609",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "**Awesome! To find the perfect meal for you, are you looking for:**"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential",
+                  "repeat_on_reprompt": false
+                },
+                {
+                  "options": [
+                    {
+                      "label": "Breakfast",
+                      "value": {
+                        "input": {
+                          "text": "Breakfast"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Lunch",
+                      "value": {
+                        "input": {
+                          "text": "Lunch"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Dinner",
+                      "value": {
+                        "input": {
+                          "text": "Dinner"
+                        }
+                      }
+                    },
+                    {
+                      "label": "Snack",
+                      "value": {
+                        "input": {
+                          "text": "Snack"
+                        }
+                      }
+                    }
+                  ],
+                  "response_type": "option",
+                  "repeat_on_reprompt": true
+                }
+              ]
+            },
+            "handlers": [
+              {
+                "type": "not_found",
+                "title": "validation_not_found_handler",
+                "output": {
+                  "generic": [
+                    {
+                      "values": [
+                        {
+                          "text_expression": {
+                            "concat": [
+                              {
+                                "scalar": "I didn't catch that. Select a valid option:"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "response_type": "text",
+                      "selection_policy": "incremental"
+                    }
+                  ]
+                },
+                "handler": "validation_not_found_handler",
+                "resolver": {
+                  "type": "prompt_again"
+                },
+                "next_handler": "validation_not_found_max_tries_handler"
+              },
+              {
+                "type": "not_found_max_tries",
+                "title": "validation_not_found_max_tries_handler",
+                "handler": "validation_not_found_max_tries_handler",
+                "resolver": {
+                  "type": "fallback"
+                }
+              }
+            ],
+            "question": {
+              "entity": "entity_23015",
+              "max_tries": 3
+            },
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_609",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_575"
+                },
+                {
+                  "value": "Get a healthy meal idea",
+                  "from_entity": "entity_36508"
+                }
+              ]
+            },
+            "next_step": "step_978"
+          },
+          {
+            "step": "step_978",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Oatmeal with Berries and Nuts is a great choice! It's rich in fiber and gives you energy for the day.\n\nTo make it: mix 1/2 cup oats with 1 cup of water or milk, cook, then top with fresh berries and a handful of almonds.\n\n<br />\n\n\n\nWhat would you like to do next?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_978",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_609"
+                },
+                {
+                  "value": "Breakfast",
+                  "from_entity": "entity_23015"
+                }
+              ]
+            },
+            "next_step": "step_295"
+          },
+          {
+            "step": "step_295",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "How about a Quick and Healthy Salad? It's easy, and you can customize it with your favorite ingredients.\n\nTo make it: Start with a base of mixed greens. Add grilled chicken, chickpeas, or a boiled egg for protein. Top with sliced vegetables like cucumber, tomatoes, and bell peppers. Finish with a light vinaigrette.\n\n<br />\n\n\n\nWhat would you like to do next?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_295",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_609"
+                },
+                {
+                  "value": "Lunch",
+                  "from_entity": "entity_23015"
+                }
+              ]
+            },
+            "next_step": "step_796"
+          },
+          {
+            "step": "step_796",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "How about Baked Salmon with Roasted Vegetables? It's easy, delicious, and full of healthy fats and vitamins.\n\nTo make it: Place a salmon fillet and your favorite veggies (like broccoli, bell peppers, and zucchini) on a baking sheet. Drizzle with olive oil, salt, and pepper. Bake at 400°F (200°C) for 15-20 minutes.\n\n<br />\n\n\n\nWhat would you like to do next?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_796",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_609"
+                },
+                {
+                  "value": "Dinner",
+                  "from_entity": "entity_23015"
+                }
+              ]
+            },
+            "next_step": "step_444"
+          },
+          {
+            "step": "step_444",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "Here are a few quick and healthy snack ideas:\n\n\n  1. Apple slices with a spoonful of peanut butter.\n  2. A handful of almonds or walnuts.\n  3. Greek yogurt with a drizzle of honey.\n  4. Carrot sticks with hummus.\n\nWhat would you like to do next?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_444",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_609"
+                },
+                {
+                  "value": "Snack",
+                  "from_entity": "entity_23015"
+                }
+              ]
+            },
+            "next_step": "step_931"
+          },
+          {
+            "step": "step_931",
+            "type": "standard",
+            "output": {
+              "generic": [
+                {
+                  "values": [
+                    {
+                      "text_expression": {
+                        "concat": [
+                          {
+                            "scalar": "You've got this! Remember, progress over perfection. Some days will be tough, but showing up is the most important part.\n\nHere are a few quick tips to help you stay on track:\n\n\n  1. Set small, achievable goals each day.\n  2. Focus on how you feel after a workout, not just the workout itself.\n  3. Find a workout buddy (even a virtual one like me!).\n  4. Don't be afraid to take a rest day."
+                          },
+                          {
+                            "scalar": "\n\nWhat would you like to do next?"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "response_type": "text",
+                  "selection_policy": "sequential"
+                }
+              ]
+            },
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_931",
+            "condition": {
+              "eq": [
+                {
+                  "variable": "step_575"
+                },
+                {
+                  "value": "Stay motivated",
+                  "from_entity": "entity_36508"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Hey Zestie",
+        "action": "action_18656",
+        "boosts": [],
+        "handlers": [],
+        "condition": {
+          "intent": "action_18656_intent_18397"
+        },
+        "variables": [
+          {
+            "title": "**Great choice! What kind of workout would you like to start tod",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_166",
+            "data_type": "any"
+          },
+          {
+            "title": "How about a Quick and Healthy Salad? It's easy, and you can cust",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_295",
+            "data_type": "any"
+          },
+          {
+            "title": "**I can help you build a great week! What kind of plan are you l",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_316",
+            "data_type": "any"
+          },
+          {
+            "title": "Here is a lower body workout. Do each exercise for 3 sets. 1. Bo",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_352",
+            "data_type": "any"
+          },
+          {
+            "title": "- Here is an upper body workout. Do each exercise for 3 sets. 1.",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_365",
+            "data_type": "any"
+          },
+          {
+            "title": "Here are a few quick and healthy snack ideas: 1. Apple slices wi",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_444",
+            "data_type": "any"
+          },
+          {
+            "title": "- Here is a full body workout for you. Do each exercise for 3 se",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_451",
+            "data_type": "any"
+          },
+          {
+            "title": "- Here's your weekly boost to keep you going! Remember, every st",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_561",
+            "data_type": "any"
+          },
+          {
+            "title": "- Eating healthy is easier with a plan! Here is a simple, health",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_570",
+            "data_type": "any"
+          },
+          {
+            "title": "**Hey there! I'm Zestie, your personal fitness buddy 💪 Ready to",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_575",
+            "data_type": "any"
+          },
+          {
+            "title": "**Awesome! To find the perfect meal for you, are you looking for",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_609",
+            "data_type": "any"
+          },
+          {
+            "title": "- Here is your simple weekly workout schedule. You can adjust th",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_707",
+            "data_type": "any"
+          },
+          {
+            "title": "How about Baked Salmon with Roasted Vegetables? It's easy, delic",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_796",
+            "data_type": "any"
+          },
+          {
+            "title": "You've got this! Remember, progress over perfection. Some days w",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_931",
+            "data_type": "any"
+          },
+          {
+            "title": "Oatmeal with Berries and Nuts is a great choice! It's rich in fi",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_978",
+            "data_type": "any"
+          }
+        ],
+        "launch_mode": "learning",
+        "next_action": "fallback",
+        "topic_switch": {
+          "allowed_from": true,
+          "allowed_into": true,
+          "never_return": false
+        },
+        "disambiguation_opt_out": false
+      }
+    ],
+    "intents": [
+      {
+        "intent": "fallback_connect_to_agent",
+        "examples": [
+          {
+            "text": "Call agent"
+          },
+          {
+            "text": "Agent help"
+          },
+          {
+            "text": "I would like to speak to a human"
+          },
+          {
+            "text": "Can I connect to an agent?"
+          },
+          {
+            "text": "I would like to speak to someone"
+          }
+        ],
+        "description": "Please transfer me to an agent"
+      },
+      {
+        "intent": "action_18656_intent_18397",
+        "examples": [
+          {
+            "text": "Hey Zestie"
+          }
+        ]
+      }
+    ],
+    "entities": [
+      {
+        "entity": "entity_36508",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Start a home workout",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Stay motivated",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Get a healthy meal idea",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Get a weekly plan",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "danger_words",
+        "values": [],
+        "fuzzy_match": false
+      },
+      {
+        "entity": "entity_23015",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Lunch",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Breakfast",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Snack",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Dinner",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "entity_37507",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Weekly Meal Plan",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Weekly Workout Schedule",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Weekly Motivation Boost",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      },
+      {
+        "entity": "sys-yes-no",
+        "values": []
+      },
+      {
+        "entity": "profane_words",
+        "values": [],
+        "fuzzy_match": false
+      },
+      {
+        "entity": "entity_38358",
+        "values": [
+          {
+            "type": "synonyms",
+            "value": "Full body workout",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Upper body workout",
+            "synonyms": []
+          },
+          {
+            "type": "synonyms",
+            "value": "Lower body workout",
+            "synonyms": []
+          }
+        ],
+        "fuzzy_match": true
+      }
+    ],
+    "metadata": {
+      "api_version": {
+        "major_version": "v2",
+        "minor_version": "2018-11-08"
+      },
+      "skill": {
+        "counts": {
+          "actions": 5,
+          "intents": 2,
+          "entities": 7,
+          "data_types": 0,
+          "collections": 0,
+          "global_variables": 0
+        }
+      }
+    },
+    "variables": [],
+    "data_types": [],
+    "collections": [],
+    "counterexamples": [],
+    "system_settings": {
+      "variable": {
+        "format": {
+          "time": {
+            "pattern": "short"
+          },
+          "currency": {
+            "fraction_digits": 2
+          }
+        }
+      },
+      "off_topic": {
+        "enabled": true
+      },
+      "auto_learn": {
+        "apply": true
+      },
+      "topic_switch": {
+        "enabled": true,
+        "messages": {
+          "enable_confirmation": true,
+          "confirmation_failure": {
+            "generic": [
+              {
+                "values": [
+                  {
+                    "text_expression": {
+                      "concat": [
+                        {
+                          "scalar": "I'm sorry, I did not catch that, please confirm."
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "response_type": "text",
+                "selection_policy": "sequential"
+              }
+            ]
+          },
+          "confirmation_request": {
+            "generic": [
+              {
+                "values": [
+                  {
+                    "text_expression": {
+                      "concat": [
+                        {
+                          "scalar": "Do you want to continue with the previous topic: "
+                        },
+                        {
+                          "system_variable": "digressed_from"
+                        },
+                        {
+                          "scalar": "?"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "response_type": "text",
+                "selection_policy": "sequential"
+              },
+              {
+                "options": [
+                  {
+                    "label": "Yes",
+                    "value": {
+                      "input": {
+                        "text": "Yes"
+                      }
+                    }
+                  },
+                  {
+                    "label": "No",
+                    "value": {
+                      "input": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "response_type": "option",
+                "repeat_on_reprompt": true
+              }
+            ]
+          }
+        },
+        "max_tries": 3
+      },
+      "generative_ai": {
+        "hap_filter": {
+          "output": {
+            "enabled": true
+          }
+        }
+      },
+      "disambiguation": {
+        "prompt": "Did you mean:",
+        "enabled": true,
+        "randomize": true,
+        "max_suggestions": 5,
+        "suggestion_text_policy": "title",
+        "none_of_the_above_prompt": "None of the above",
+        "use_connect_to_support_prompt": "Connect to support",
+        "single_answer_clarification_prompt": "Something else"
+      },
+      "search_routing": {
+        "target": "conversational_search"
+      },
+      "spelling_auto_correct": true
+    },
+    "learning_opt_out": false,
+    "language": "en"
+  },
+  "description": "created for assistant 0c289f13-1308-4b78-ae1c-50b6cf073a53",
+  "dialog_settings": {
+    "source_assistant": "ad24cef8-e004-4b4f-acd1-9b72c1d24151"
+  },
+  "created": "2025-08-03T22:10:53.681Z",
+  "updated": "2025-08-03T22:10:53.681Z",
+  "snapshot": "1",
+  "assistant_id": "0c289f13-1308-4b78-ae1c-50b6cf073a53",
+  "assistant_references": []
+}
